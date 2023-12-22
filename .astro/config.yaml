@@ -1,0 +1,6 @@
+postgres:
+  port: "5566"
+project:
+  name: astro-data-warehouse
+webserver:
+  port: "5577"
