@@ -21,7 +21,7 @@ The project utilizes the pNEUMA dataset, a large-scale collection of naturalisti
 
 ## Directory Structure
 
-- `/airflow`: Contains Airflow DAGs and configurations.
+- `/dags`: Contains Airflow DAGs and configurations.
 - `/dbt`: Holds dbt transformations and documentation.
 - `/redash`: Includes configurations for redash reporting.
 
