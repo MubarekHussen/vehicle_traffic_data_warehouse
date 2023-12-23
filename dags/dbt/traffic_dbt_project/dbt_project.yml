@@ -1,0 +1,11 @@
+name: "traffic_dbt_project"
+version: "1.0.0"
+config-version: 2
+
+models:
+  traffic_dbt_project:
+    +schema: analytics
+
+seeds:
+  traffic_dbt_project:
+    +schema: analytics
