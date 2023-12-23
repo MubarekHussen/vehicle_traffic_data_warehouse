@@ -8,6 +8,7 @@ default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
     'start_date': datetime(2023, 12, 20),
+    'dagrun_timeout': timedelta(hours=2),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
@@ -28,6 +29,7 @@ def write_df_to_postgres(df, table_name, engine):
 
 def load_data(file_path, table_name, engine):
     df = read_csv_to_df(file_path)
+    print(f"Initial row count in {table_name} DataFrame: {len(df)}")
     df.columns = df.columns.str.strip()
     if df.empty:
         print(f"No data in {table_name} DataFrame.")
@@ -36,6 +38,8 @@ def load_data(file_path, table_name, engine):
         print(df.head())
 
     write_df_to_postgres(df, table_name, engine)
+    print(f"Final row count written to {table_name} in the database: {len(df)}")
+
 
 file_paths = ['/usr/local/airflow/include/dataset/trajectory_data.csv',
               '/usr/local/airflow/include/dataset/vehicle_positions_data.csv']
